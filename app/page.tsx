@@ -35,28 +35,18 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-900 text-white scroll-smooth">
+    <div className="min-h-screen flex flex-col bg-gray-900 text-white scroll-smooth border-yellow-400">
       {/* Navbar */}
       <nav className="sticky top-0 bg-gray-800 shadow-lg z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-yellow-400">Rishav Courier</h1>
           <ul className="hidden md:flex space-x-8">
-            <li className="relative group cursor-pointer">
-              <a href="#home">Home</a>
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
-            </li>
-            <li className="relative group cursor-pointer">
-              <a href="#tracking">Tracking</a>
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
-            </li>
-            <li className="relative group cursor-pointer">
-              <a href="#services">Services</a>
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
-            </li>
-            <li className="relative group cursor-pointer">
-              <a href="#home">Contact</a>
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
-            </li>
+            {["Home", "Tracking", "Services", "Contact"].map((item) => (
+              <li key={item} className="relative group cursor-pointer">
+                <a href={`#${item.toLowerCase()}`}>{item}</a>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
@@ -69,7 +59,7 @@ export default function Home() {
           </h2>
           <p className="mt-3 text-gray-300 text-lg sm:text-xl font-semibold uppercase tracking-wide">
             SHOP NO. 6, FIRST FLOOR, GURU LAL JI MARKET, NEAR BUS STAND,
-            GURUDASPUR ROAD, BATALA - 143505
+            GURDASPUR ROAD, BATALA - 143505
           </p>
         </div>
       </header>
@@ -77,7 +67,6 @@ export default function Home() {
       {/* Tracking Info Section */}
       <section id="tracking" className="bg-gradient-to-r from-gray-800 to-gray-700 py-12">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-          {/* Left Side: Text Info */}
           <div>
             <h2 className="text-3xl font-bold text-yellow-400 mb-4">
               Track Your Shipment with Ease
@@ -88,8 +77,6 @@ export default function Home() {
               each shipment. Stay updated from pickup to delivery — we ensure
               full transparency.
             </p>
-
-            {/* Unique Contact Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-center bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-yellow-400/40 transition">
                 <PhoneIcon className="w-8 h-8 text-yellow-400 mr-3" />
@@ -108,14 +95,13 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Right Side: Image */}
-          <div className="rounded-lg overflow-hidden">
+          <div className="rounded-lg overflow-hidden flex justify-center items-center">
             <Image
               src="/logos/boy.gif"
               alt="Tracking Illustration"
               width={500}
               height={300}
+              priority
               className="object-cover"
             />
           </div>
@@ -133,7 +119,6 @@ export default function Home() {
               key={p.name}
               className="bg-gray-800 border border-yellow-400/50 rounded-xl shadow-md hover:shadow-yellow-400/60 hover:border-yellow-400 transition transform hover:-translate-y-2 duration-300"
             >
-              {/* Logo container */}
               <div className="flex items-center justify-center h-24 bg-gray-900 rounded-t-xl p-3">
                 <Image
                   src={p.logo}
@@ -143,7 +128,6 @@ export default function Home() {
                   className="object-contain"
                 />
               </div>
-              {/* Name */}
               <div className="p-4 text-center">
                 <p className="font-semibold text-gray-200 uppercase tracking-wide">
                   {p.name}
@@ -173,8 +157,32 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Find Us Section */}
+      <section className="bg-gray-900 py-12 border-t border-yellow-400">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-yellow-400 text-center mb-6">
+            Find Us
+          </h2>
+          <p className="text-center text-gray-300 mb-6">
+            Shop No. 6, First Floor, Guru Lal Ji Market, Near Bus Stand,
+            Gurdaspur Road, Batala - 143505
+          </p>
+          <div className="rounded-lg overflow-hidden shadow-lg border-4 border-yellow-400">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d545.7643169147636!2d75.20074671892476!3d31.820902492420405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDQ5JzE2LjUiTiA3NcKwMTInMDUuMyJF!5e0!3m2!1sen!2sin!4v1755194778278!5m2!1sen!2sin"
+    width="100%" 
+    height="350"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer id="contact" className="bg-gray-800 text-gray-400 text-center py-4">
+      <footer id="contact" className="bg-gray-800 text-gray-400 text-center py-4 border-t border-yellow-400">
         <p>
           &copy; {new Date().getFullYear()} Rishav Domestic & International
           Courier Service
