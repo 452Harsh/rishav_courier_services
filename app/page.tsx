@@ -1,13 +1,19 @@
 import Image from "next/image";
-import { PhoneIcon, EnvelopeIcon, TruckIcon, CubeIcon, MapIcon } from "@heroicons/react/24/solid";
+import {
+  PhoneIcon,
+  EnvelopeIcon,
+  TruckIcon,
+  CubeIcon,
+  MapIcon,
+} from "@heroicons/react/24/solid";
 
 export default function Home() {
   const providers = [
     { name: "DHL", logo: "/logos/dhl.png" },
-    { name: "FedEx", logo: "/logos/fedex.png" },
+    { name: "FEDEX", logo: "/logos/fedex.png" },
     { name: "UPS", logo: "/logos/ups.png" },
     { name: "DPD", logo: "/logos/dpd.png" },
-    { name: "Self", logo: "/logos/self.png" },
+    { name: "SELF", logo: "/logos/self.png" },
   ];
 
   const benefits = [
@@ -29,39 +35,47 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-900 text-white">
+    <div className="min-h-screen flex flex-col bg-gray-900 text-white scroll-smooth">
       {/* Navbar */}
       <nav className="sticky top-0 bg-gray-800 shadow-lg z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-yellow-400">Rishav Courier</h1>
           <ul className="hidden md:flex space-x-8">
-            {["Home", "Tracking", "Services", "Contact"].map((item) => (
-              <li
-                key={item}
-                className="relative group cursor-pointer"
-              >
-                {item}
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
-              </li>
-            ))}
+            <li className="relative group cursor-pointer">
+              <a href="#home">Home</a>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
+            </li>
+            <li className="relative group cursor-pointer">
+              <a href="#tracking">Tracking</a>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
+            </li>
+            <li className="relative group cursor-pointer">
+              <a href="#services">Services</a>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
+            </li>
+            <li className="relative group cursor-pointer">
+              <a href="#home">Contact</a>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
+            </li>
           </ul>
         </div>
       </nav>
 
       {/* Header */}
-      <header className="bg-gray-800 py-8 shadow-lg">
+      <header id="home" className="bg-gray-800 py-8 shadow-lg">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-extrabold text-yellow-400">
             Rishav Domestic & International Courier Service
           </h2>
-          <p className="mt-3 text-gray-300">
-            Shop no. 6, First Floor, Guru Lal Ji Market, Near Bus Stand, Gurudaspur Road, Batala - 143505
+          <p className="mt-3 text-gray-300 text-lg sm:text-xl font-semibold uppercase tracking-wide">
+            SHOP NO. 6, FIRST FLOOR, GURU LAL JI MARKET, NEAR BUS STAND,
+            GURUDASPUR ROAD, BATALA - 143505
           </p>
         </div>
       </header>
 
       {/* Tracking Info Section */}
-      <section className="bg-gradient-to-r from-gray-800 to-gray-700 py-12">
+      <section id="tracking" className="bg-gradient-to-r from-gray-800 to-gray-700 py-12">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
           {/* Left Side: Text Info */}
           <div>
@@ -69,8 +83,10 @@ export default function Home() {
               Track Your Shipment with Ease
             </h2>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              We provide <span className="text-yellow-400">tracking facilities</span> for each shipment.
-              Stay updated from pickup to delivery — we ensure full transparency.
+              We provide{" "}
+              <span className="text-yellow-400">tracking facilities</span> for
+              each shipment. Stay updated from pickup to delivery — we ensure
+              full transparency.
             </p>
 
             {/* Unique Contact Cards */}
@@ -83,7 +99,10 @@ export default function Home() {
               </div>
               <div className="flex items-center bg-gray-800 p-4 w-max rounded-lg shadow-lg hover:shadow-yellow-400/40 transition">
                 <EnvelopeIcon className="w-8 h-8 text-yellow-400 mr-3" />
-                <a href="mailto:rishavkapoor138@gmail.com" className="text-lg hover:underline">
+                <a
+                  href="mailto:rishavkapoor138@gmail.com"
+                  className="text-lg hover:underline"
+                >
                   rishavkapoor138@gmail.com
                 </a>
               </div>
@@ -91,7 +110,7 @@ export default function Home() {
           </div>
 
           {/* Right Side: Image */}
-          <div className="rounded-lg overflow-hidden ">
+          <div className="rounded-lg overflow-hidden">
             <Image
               src="/logos/boy.gif"
               alt="Tracking Illustration"
@@ -104,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* Service Providers */}
-      <section className="max-w-6xl mx-auto px-6 py-12">
+      <section id="services" className="max-w-6xl mx-auto px-6 py-12">
         <h2 className="text-3xl font-bold text-center mb-10 text-yellow-400">
           Our Service Providers
         </h2>
@@ -112,10 +131,24 @@ export default function Home() {
           {providers.map((p) => (
             <div
               key={p.name}
-              className="bg-gray-800 rounded-xl shadow-md hover:shadow-yellow-400/40 transition p-4 flex flex-col items-center"
+              className="bg-gray-800 border border-yellow-400/50 rounded-xl shadow-md hover:shadow-yellow-400/60 hover:border-yellow-400 transition transform hover:-translate-y-2 duration-300"
             >
-              <Image src={p.logo} alt={p.name} width={80} height={50} />
-              <p className="mt-3 font-semibold text-gray-200">{p.name}</p>
+              {/* Logo container */}
+              <div className="flex items-center justify-center h-24 bg-gray-900 rounded-t-xl p-3">
+                <Image
+                  src={p.logo}
+                  alt={p.name}
+                  width={80}
+                  height={50}
+                  className="object-contain"
+                />
+              </div>
+              {/* Name */}
+              <div className="p-4 text-center">
+                <p className="font-semibold text-gray-200 uppercase tracking-wide">
+                  {p.name}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -141,8 +174,11 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-gray-400 text-center py-4">
-        <p>&copy; {new Date().getFullYear()} Rishav Domestic & International Courier Service</p>
+      <footer id="contact" className="bg-gray-800 text-gray-400 text-center py-4">
+        <p>
+          &copy; {new Date().getFullYear()} Rishav Domestic & International
+          Courier Service
+        </p>
       </footer>
     </div>
   );
