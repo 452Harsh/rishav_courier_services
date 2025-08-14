@@ -1,102 +1,148 @@
 import Image from "next/image";
+import { PhoneIcon, EnvelopeIcon, TruckIcon, CubeIcon, MapIcon } from "@heroicons/react/24/solid";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const providers = [
+    { name: "DHL", logo: "/logos/dhl.png" },
+    { name: "FedEx", logo: "/logos/fedex.png" },
+    { name: "UPS", logo: "/logos/ups.png" },
+    { name: "DPD", logo: "/logos/dpd.png" },
+    { name: "Self", logo: "/logos/self.png" },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const benefits = [
+    {
+      icon: <CubeIcon className="w-12 h-12 text-yellow-400" />,
+      title: "Premium Packing",
+      desc: "Good packing facilities with on-the-spot service ensuring safety of goods.",
+    },
+    {
+      icon: <TruckIcon className="w-12 h-12 text-yellow-400" />,
+      title: "Weight-to-Weight Packing",
+      desc: "We optimize packing to match weight requirements without compromise.",
+    },
+    {
+      icon: <MapIcon className="w-12 h-12 text-yellow-400" />,
+      title: "Live Tracking",
+      desc: "Tracking facilities for each shipment so you're always informed.",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-900 text-white">
+      {/* Navbar */}
+      <nav className="sticky top-0 bg-gray-800 shadow-lg z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-yellow-400">Rishav Courier</h1>
+          <ul className="hidden md:flex space-x-8">
+            {["Home", "Tracking", "Services", "Contact"].map((item) => (
+              <li
+                key={item}
+                className="relative group cursor-pointer"
+              >
+                {item}
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all group-hover:w-full"></span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </nav>
+
+      {/* Header */}
+      <header className="bg-gray-800 py-8 shadow-lg">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-4xl font-extrabold text-yellow-400">
+            Rishav Domestic & International Courier Service
+          </h2>
+          <p className="mt-3 text-gray-300">
+            Shop no. 6, First Floor, Guru Lal Ji Market, Near Bus Stand, Gurudaspur Road, Batala - 143505
+          </p>
+        </div>
+      </header>
+
+      {/* Tracking Info Section */}
+      <section className="bg-gradient-to-r from-gray-800 to-gray-700 py-12">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+          {/* Left Side: Text Info */}
+          <div>
+            <h2 className="text-3xl font-bold text-yellow-400 mb-4">
+              Track Your Shipment with Ease
+            </h2>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              We provide <span className="text-yellow-400">tracking facilities</span> for each shipment.
+              Stay updated from pickup to delivery — we ensure full transparency.
+            </p>
+
+            {/* Unique Contact Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex items-center bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-yellow-400/40 transition">
+                <PhoneIcon className="w-8 h-8 text-yellow-400 mr-3" />
+                <a href="tel:6284618088" className="text-lg hover:underline">
+                  6284618088
+                </a>
+              </div>
+              <div className="flex items-center bg-gray-800 p-4 w-max rounded-lg shadow-lg hover:shadow-yellow-400/40 transition">
+                <EnvelopeIcon className="w-8 h-8 text-yellow-400 mr-3" />
+                <a href="mailto:rishavkapoor138@gmail.com" className="text-lg hover:underline">
+                  rishavkapoor138@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side: Image */}
+          <div className="rounded-lg overflow-hidden ">
+            <Image
+              src="/logos/boy.gif"
+              alt="Tracking Illustration"
+              width={500}
+              height={300}
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Service Providers */}
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <h2 className="text-3xl font-bold text-center mb-10 text-yellow-400">
+          Our Service Providers
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          {providers.map((p) => (
+            <div
+              key={p.name}
+              className="bg-gray-800 rounded-xl shadow-md hover:shadow-yellow-400/40 transition p-4 flex flex-col items-center"
+            >
+              <Image src={p.logo} alt={p.name} width={80} height={50} />
+              <p className="mt-3 font-semibold text-gray-200">{p.name}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="bg-gray-800 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12 text-yellow-400">
+          Why Choose Us?
+        </h2>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6">
+          {benefits.map((b, idx) => (
+            <div
+              key={idx}
+              className="bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-yellow-400/40 transition flex flex-col items-center text-center"
+            >
+              {b.icon}
+              <h3 className="text-xl font-bold mt-4 mb-2">{b.title}</h3>
+              <p className="text-gray-300">{b.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-gray-400 text-center py-4">
+        <p>&copy; {new Date().getFullYear()} Rishav Domestic & International Courier Service</p>
       </footer>
     </div>
   );
