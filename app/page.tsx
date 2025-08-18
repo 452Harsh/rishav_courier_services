@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   PhoneIcon,
   EnvelopeIcon,
@@ -9,11 +10,14 @@ import {
 
 export default function Home() {
   const providers = [
-    { name: "DHL", logo: "/logos/dhl.png" },
-    { name: "FEDEX", logo: "/logos/fedex.png" },
-    { name: "UPS", logo: "/logos/ups.png" },
-    { name: "DPD", logo: "/logos/dpd.png" },
-    { name: "SELF", logo: "/logos/self.png" },
+    { name: "DHL", logo: "/logos/dhl.png", link: "https://www.dhl.com" },
+    { name: "FEDEX", logo: "/logos/fedex.png", link: "https://www.fedex.com" },
+    { name: "UPS", logo: "/logos/ups.png", link: "https://www.ups.com/track?loc=en_IN" },
+    { name: "DPD", logo: "/logos/dpd.png", link: "https://www.dpd.com" },
+    { name: "Transit Point ", logo: "/logos/transit.png", link: "https://transitpl.com" },
+    { name: "Aramex", logo: "/logos/aramex.png", link: "https://www.aramex.com/track/shipments" },
+    { name: "Skynet", logo: "/logos/skynet.png", link: "https://skynetww.com" },
+    { name: "SELF", logo: "/logos/self.png", link: "#" },
   ];
 
   const benefits = [
@@ -109,34 +113,56 @@ export default function Home() {
       </section>
 
       {/* Service Providers */}
-      <section id="services" className="max-w-6xl mx-auto px-6 py-12">
-        <h2 className="text-3xl font-bold text-center mb-10 text-yellow-400">
-          Our Service Providers
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-          {providers.map((p) => (
-            <div
-              key={p.name}
-              className="bg-gray-800 border border-yellow-400/50 rounded-xl shadow-md hover:shadow-yellow-400/60 hover:border-yellow-400 transition transform hover:-translate-y-2 duration-300"
-            >
-              <div className="flex items-center justify-center h-24 bg-gray-900 rounded-t-xl p-3">
-                <Image
-                  src={p.logo}
-                  alt={p.name}
-                  width={80}
-                  height={50}
-                  className="object-contain"
-                />
-              </div>
-              <div className="p-4 text-center">
-                <p className="font-semibold text-gray-200 uppercase tracking-wide">
-                  {p.name}
-                </p>
-              </div>
-            </div>
-          ))}
+      <section id="services" className="max-w-6xl mx-auto px-6 py-16">
+  <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-yellow-400 tracking-wide">
+    Our Service Providers
+  </h2>
+
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+
+    {providers.map((p) => (
+      <div
+        key={p.name}
+        className="group bg-gray-800 border border-yellow-400/30 rounded-2xl shadow-md 
+                   hover:shadow-yellow-400/40 hover:border-yellow-400 
+                   transition-transform transform hover:-translate-y-3 duration-300 
+                   flex flex-col"
+      >
+        {/* Logo */}
+        <div className="flex items-center justify-center h-28 bg-gray-900 rounded-t-2xl p-4">
+          <Image
+            src={p.logo}
+            alt={p.name}
+            width={90}
+            height={60}
+            className="object-contain transition-transform group-hover:scale-110 duration-300"
+          />
         </div>
-      </section>
+
+        {/* Content */}
+        <div className="p-5 text-center flex flex-col flex-grow">
+          <p className="font-semibold text-gray-200 uppercase tracking-wide text-sm md:text-base">
+            {p.name}
+          </p>
+
+          <Link
+            href={p.link || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block px-4 py-2 text-sm md:text-base
+                       bg-gradient-to-r from-yellow-400 to-yellow-500
+                       text-gray-900 font-bold rounded-xl shadow-md 
+                       hover:from-yellow-500 hover:to-yellow-400 
+                       transition-transform transform hover:scale-105"
+          >
+            Track Now
+          </Link>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
 
       {/* Why Choose Us */}
       <section className="bg-gray-800 py-16">
@@ -168,16 +194,16 @@ export default function Home() {
             Gurdaspur Road, Batala - 143505
           </p>
           <div className="rounded-lg overflow-hidden shadow-lg border-4 border-yellow-400">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d545.7643169147636!2d75.20074671892476!3d31.820902492420405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDQ5JzE2LjUiTiA3NcKwMTInMDUuMyJF!5e0!3m2!1sen!2sin!4v1755194778278!5m2!1sen!2sin"
-    width="100%" 
-    height="500"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d545.7643169147636!2d75.20074671892476!3d31.820902492420405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDQ5JzE2LjUiTiA3NcKwMTInMDUuMyJF!5e0!3m2!1sen!2sin!4v1755194778278!5m2!1sen!2sin"
+              width="100%"
+              height="500"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
         </div>
       </section>
 
